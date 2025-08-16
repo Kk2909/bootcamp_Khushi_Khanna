@@ -1,0 +1,10 @@
+from src.config import load_env, get_key
+import numpy as np
+
+load_env()
+print("API_KEY present:", get_key("API_KEY") is not None)
+
+# dummy relation check
+revenue = np.array([100, 200, 300])
+risk = np.array([0.1, 0.2, 0.3])
+print("Revenue / Risk ratio:", revenue / risk)
