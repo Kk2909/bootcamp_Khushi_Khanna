@@ -9,7 +9,7 @@
 - Required columns present: `date`, `revenue`, `risk_score`
 - Dtype check printed in notebook
 
-## SQLite (Optional for practice)
+## SQLite (Mainly for project practice)
 Created `data/bootcamp_stage5.db` with table `metrics (id, date, revenue, risk_score)` and ran CRUD + aggregations to generate a DataFrame for saving.
 
 ## How to Reproduce
