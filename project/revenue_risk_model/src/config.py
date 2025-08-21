@@ -1,5 +1,10 @@
+# src/config.py
 import os
+from pathlib import Path
 from dotenv import load_dotenv, find_dotenv
+
+# Project root = the folder that CONTAINS src/
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 def load_env(dotenv_path: str | None = None) -> None:
     path = dotenv_path or find_dotenv(usecwd=True)
@@ -11,10 +16,18 @@ def get_key(name: str, default: str | None = None, required: bool = False) -> st
         raise KeyError(f"Missing required environment variable: {name}")
     return val
 
+def _resolve_from_root(rel: str) -> Path:
+    p = Path(rel)
+    return p if p.is_absolute() else (PROJECT_ROOT / p)
+
 def data_dir(kind: str = "root") -> str:
     load_env()
+    base = _resolve_from_root(get_key("DATA_DIR", "data"))
     if kind == "raw":
-        return get_key("DATA_DIR_RAW", "./data/raw", False)
+        raw = get_key("DATA_DIR_RAW", None)
+        return str(_resolve_from_root(raw) if raw else (base / "raw"))
     if kind == "processed":
-        return get_key("DATA_DIR_PROCESSED", "./data/processed", False)
-    return get_key("DATA_DIR", "./data", False)
+        proc = get_key("DATA_DIR_PROCESSED", None)
+        return str(_resolve_from_root(proc) if proc else (base / "processed"))
+    return str(base)
+
