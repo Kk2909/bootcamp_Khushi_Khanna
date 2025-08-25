@@ -1,0 +1,46 @@
+﻿project:
+  name: "Revenue vs Risk Model v2"
+  horizon_years: 5
+  frequency: "quarterly"
+  peers: ["JP Morgan","Deutsche Bank","Morgan Stanley","Bank of America","Goldman Sachs"]
+
+data:
+  id_cols: ["bank","date"]
+  target: "revenue_total"
+  baseline_feature: "var"
+  normalize_by_peer: true
+  normalization:
+    method: "zscore"
+    per_group: "bank"
+
+paths:
+  raw_dir: "project/data/raw"
+  processed_dir: "project/data/processed"
+  features_dir: "project/data/features"
+  models_dir: "project/models"
+
+features:
+  required: ["var"]
+  candidates:
+    - "market_volatility"
+    - "interest_rate"
+    - "rwa"
+    - "deal_volume"
+    - "aum"
+    - "lag_revenue_1q"
+    - "lag_var_1q"
+
+splits:
+  method: "time_series_split"
+  n_splits: 5
+
+model:
+  type: "linear_regression"
+  regularization: null
+
+metrics: ["MAE","RMSE","MAPE","R2"]
+
+evaluation:
+  error_by_bank: true
+  calibration_plots: true
+  backtest_window: null
