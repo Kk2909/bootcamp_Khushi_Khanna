@@ -2,7 +2,7 @@
 
 
 
-\*\*What this contains\*\*
+What this contains
 
 1\) `framework\_guide.md` – completed lifecycle guide (Stages 1–16).
 
