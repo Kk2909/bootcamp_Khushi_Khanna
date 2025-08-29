@@ -1,0 +1,57 @@
+{
+  "generated_at": "2025-08-28T21:07:31",
+  "n_rows_model": 9,
+  "features_regression": [
+    "risk_var95_lag1",
+    "risk_vol60_lag1",
+    "rev_lag1"
+  ],
+  "linear_regression": {
+    "r2_train": 0.9957585771566844,
+    "rmse_train": 714475619.7568709,
+    "r2_test": 0.9756929946599131,
+    "rmse_test": 858112352.0173098,
+    "coefficients": {
+      "risk_var95_lag1": 23327208753.923397,
+      "risk_vol60_lag1": 757616475032.3215,
+      "rev_lag1": 0.9462890625
+    },
+    "intercept": -9483506517.503582
+  },
+  "time_series": {
+    "model": "EMA(alpha=0.3)",
+    "next_4Q_forecast": [
+      0.01876171753762484,
+      0.01876171753762484,
+      0.01876171753762484,
+      0.01876171753762484
+    ]
+  },
+  "classification": {
+    "features": [
+      "risk_var95_lag1",
+      "risk_vol60_lag1",
+      "rev_lag1"
+    ],
+    "accuracy": 0.3333333333333333,
+    "precision": 0.3333333333333333,
+    "recall": 1.0,
+    "f1": 0.5,
+    "auc": 1.0,
+    "confusion_matrix": [
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "coef_example": [
+      0.7866591212239128,
+      0.7144525453011109,
+      -0.0528511504516968
+    ]
+  }
+}
