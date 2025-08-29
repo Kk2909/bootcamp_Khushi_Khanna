@@ -16,7 +16,7 @@ Key steps defined as tasks: \*\*ingest\_api → scrape\_aux → clean\_preproces
 
 
 
-The deliverables are:  
+deliverables :  
 
 &nbsp;`orchestration\_plan.md` 
 
